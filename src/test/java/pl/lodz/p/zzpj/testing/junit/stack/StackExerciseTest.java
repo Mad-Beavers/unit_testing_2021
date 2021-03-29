@@ -7,25 +7,25 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
-import static junitparams.JUnitParamsRunner.$;
-
 @RunWith(JUnitParamsRunner.class)
 public class StackExerciseTest {
     StackExercise stackExercise;
 
     @BeforeClass
-    public static void beforeClass(){
+    public static void beforeClass() {
 
     }
+
     @Before
     public void before() {
         stackExercise = new StackExercise();
     }
 
-    @Test (expected = StackEmptyException.class)
+    @Test(expected = StackEmptyException.class)
     public void popEmptyStack() throws StackEmptyException {
         stackExercise.pop();
     }
+
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
@@ -35,13 +35,14 @@ public class StackExerciseTest {
         exception.expect(StackEmptyException.class);
         stackExercise.pop();
     }
+
     @Test
     public void pop() throws StackEmptyException {
         stackExercise.push("First");
         Assert.assertEquals(stackExercise.top(), "First");
-
     }
-    @Test ()
+
+    @Test()
     public void push() throws StackEmptyException {
         stackExercise.push("First");
         stackExercise.push("Second");
@@ -49,9 +50,10 @@ public class StackExerciseTest {
         Assert.assertEquals(stackExercise.top(), "First");
 
     }
+
     @Test()
     public void isEmpty() {
-        Assert.assertEquals(stackExercise.isEmpty(), true);
+        Assert.assertTrue(stackExercise.isEmpty());
     }
 
 
@@ -70,11 +72,10 @@ public class StackExerciseTest {
     }
 
     private Object[] parameters() {
-        return $(
-            $("First", "First"),
-            $("Second", "Second")
-        );
+        return new Object[]{
+                new Object[]{"First", "First"},
+                new Object[]{"Second", "Second"}
+        };
     }
-
 
 }

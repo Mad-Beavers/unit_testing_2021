@@ -8,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static junitparams.JUnitParamsRunner.$;
 
 @RunWith(JUnitParamsRunner.class)
 public class DivisibilityTest {
@@ -24,25 +23,27 @@ public class DivisibilityTest {
     public void before() {
         divisibility = new Divisibility();
     }
-    @Test (expected = CantByZeroException.class)
+
+    @Test(expected = CantByZeroException.class)
     public void throwException() throws CantByZeroException {
         divisibility.isDivisible(10, 0);
     }
+
     @Test
     @Parameters({"8, 2", "10, 2"})
     public void isDivisibleTest(int a, int b) throws CantByZeroException {
-        Assert.assertEquals(divisibility.isDivisible(a, b), true);
+        Assert.assertTrue(divisibility.isDivisible(a, b));
     }
+
     @Test
     @Parameters(method = "parameters")
     public void isDivisibleSecondTest(int a, int b) throws CantByZeroException {
-        Assert.assertEquals(divisibility.isDivisible(a, b), true);
+        Assert.assertTrue(divisibility.isDivisible(a, b));
     }
 
     private Object[] parameters() {
-        return $(
-          $(8,2),
-          $(10,2)
-        );
+        return new Object[]{
+                new Object[]{8, 2},
+                new Object[]{10, 2}};
     }
 }

@@ -8,8 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static junitparams.JUnitParamsRunner.$;
-
 @RunWith(JUnitParamsRunner.class)
 public class FizzBuzzTest {
 
@@ -19,6 +17,7 @@ public class FizzBuzzTest {
     public static void beforeClass() {
 
     }
+
     @Before
     public void before() {
         fizzBuzz = new FizzBuzz();
@@ -37,11 +36,10 @@ public class FizzBuzzTest {
     }
 
     private Object[] parameters() {
-        return $(
-                $(30, "FizzBuzz"),
-                $(5, "Buzz"),
-                $(9, "Fizz")
-
-        );
+        return new Object[]{
+                new Object[]{30, "FizzBuzz"},
+                new Object[]{5, "Buzz"},
+                new Object[]{9, "Fizz"}
+        };
     }
 }

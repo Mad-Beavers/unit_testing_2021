@@ -50,7 +50,7 @@ public class FellowshipAssertionTest {
 
     @Test
     public void shouldNotContainDuplicatedFellows() {
-        long allFellowsCount = Streams.stream(fellowship.iterator()).count();
+        long allFellowsCount = Streams.stream(fellowship.iterator()).distinct().count();
         long distinctFellowsCount = Streams.stream(fellowship.iterator()).count();
 
         assertThat(allFellowsCount).isEqualTo(distinctFellowsCount);

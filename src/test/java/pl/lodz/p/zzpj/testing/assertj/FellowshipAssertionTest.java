@@ -16,8 +16,8 @@ public class FellowshipAssertionTest {
 
     @Test
     public void frodoShouldBeIn() {
-        assertThat(fellowship.hobbits().stream().
-                anyMatch(hobbit -> hobbit.getName().equalsIgnoreCase("Frodo"))).isTrue();
+        assertThat(fellowship.hobbits().stream()
+                .anyMatch(hobbit -> hobbit.getName().equalsIgnoreCase("Frodo"))).isTrue();
     }
 
     @Test
@@ -74,7 +74,7 @@ public class FellowshipAssertionTest {
     @Test
     public void shouldContainNineFellowsButNoneGiant() {
         assertThat(Streams.stream(fellowship.iterator())).noneMatch(fellow -> fellow.getRace().equals(Fellow.Race.GIANT));
-        assertThat(Streams.stream(fellowship.iterator()).count()).isEqualTo(9);
+        assertThat(Streams.stream(fellowship.iterator())).hasSize(9);
     }
 
     @Test

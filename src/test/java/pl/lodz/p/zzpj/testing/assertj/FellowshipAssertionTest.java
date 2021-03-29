@@ -50,10 +50,10 @@ public class FellowshipAssertionTest {
 
     @Test
     public void shouldNotContainDuplicatedFellows() {
-        List<Fellow> fellowList = Streams.stream(fellowship.iterator()).collect(Collectors.toList());
-        Set<Fellow> fellowSet = new HashSet<>(fellowList);
+        long allFellowsCount = Streams.stream(fellowship.iterator()).count();
+        long distinctFellowsCount = Streams.stream(fellowship.iterator()).count();
 
-        assertThat(fellowSet).hasSameSizeAs(fellowList);
+        assertThat(allFellowsCount).isEqualTo(distinctFellowsCount);
     }
 
     @Test
